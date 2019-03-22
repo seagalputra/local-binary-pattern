@@ -33,14 +33,11 @@ labelTrain = label(1:100,:);
 labelValidation = label(101:120,:);
 
 %% Fit into knn classifier
-knnMdl = fitcknn(dataTrain, labelTrain, 'NumNeighbors',11,'Standardize',1);
-predict = knnMdl.predict(dataValidation);
+% knnMdl = fitcknn(dataTrain, labelTrain, 'NumNeighbors',11,'Standardize',1);
+% predict = knnMdl.predict(dataValidation);
+predict = kNNClassifier(dataTrain, dataValidation, labelTrain, 11);
 
 %% Accuracy
-rightLabel = 0;
-for j = 1:size(predict,1)
-    if (isequal(predict{j}, labelValidation{j}))
-        rightLabel = rightLabel + 1;
-    end
-end
-accuracy = (rightLabel / size(predict,1)) * 100;
+correct = predict == labelValidation;
+accuracy = sum(correct) / size(labelValidation, 1);
+disp(['Akurasi : ', num2str(accuracy)]);
