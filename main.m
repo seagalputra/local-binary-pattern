@@ -32,12 +32,28 @@ dataValidation = feature(101:120,:);
 labelTrain = label(1:100,:);
 labelValidation = label(101:120,:);
 
+%% Convert label to binary 0 or 1
+% label 0 untuk indramayu, label 1 untuk harumanis
+for i = 1:size(labelTrain,1)
+    if (labelTrain{i} == 'indramayu')
+        Y(i,:) = 0; 
+    elseif (labelTrain{i} == 'harumanis')
+        Y(i,:) = 1;
+    end
+end
+
 %% Fit into knn classifier
 % knnMdl = fitcknn(dataTrain, labelTrain, 'NumNeighbors',11,'Standardize',1);
 % predict = knnMdl.predict(dataValidation);
-predict = kNNClassifier(dataTrain, dataValidation, labelTrain, 11);
+predict = kNNClassifier(dataTrain, dataValidation, Y, 11);
 
 %% Accuracy
-correct = predict == labelValidation;
-accuracy = sum(correct) / size(labelValidation, 1);
-disp(['Akurasi : ', num2str(accuracy)]);
+% correct = predict == labelValidation;
+% accuracy = sum(correct) / size(labelValidation, 1);
+% disp(['Akurasi : ', num2str(accuracy)]);
+
+%%
+for i = 1:size(predict,1)
+    eq(i) = predict(i) == labelValidation{i};
+end
+corr = sum(eq) / size(predict,1);
