@@ -2,7 +2,13 @@ clear;
 clc;
 close all;
 
-listSubFolder = dir('data\**\*.JPG');
+% original size image
+listSubFolder = dir('data\original\**\*.JPG');
+% cropped size image
+% listSubFolder = dir('data\cropped\**\*.JPG');
+% mixed size image
+% listSubFolder = dir('data\mixed\**\*.JPG');
+
 for i = 1:size(listSubFolder,1)
     imageData{i} = imread(fullfile(listSubFolder(i).folder, listSubFolder(i).name));
     name = strsplit(listSubFolder(i).name, '_');
