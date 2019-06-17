@@ -3,9 +3,9 @@ clc;
 close all;
 
 % original size image
-listSubFolder = dir('data\original\**\*.JPG');
+% listSubFolder = dir('data\original\**\*.JPG');
 % cropped size image
-% listSubFolder = dir('data\cropped\**\*.JPG');
+listSubFolder = dir('data\cropped\**\*.JPG');
 % mixed size image
 % listSubFolder = dir('data\mixed\**\*.JPG');
 

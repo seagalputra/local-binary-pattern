@@ -3,7 +3,7 @@ clc;
 close all;
 
 % Load trained model
-load('KNNModel');
+knnMdl = loadCompactModel('KNNModel');
 
 % Testing model
 % 1. Load image
