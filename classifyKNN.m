@@ -18,11 +18,21 @@ for i = 1:cv.NumTestSets
     labelTestPartition = labelTrain(cv.test(i),:);
     
     knnMdl = fitcknn(trainPartition, labelTrainPartition, ...
-        'NumNeighbors', 7, 'Standardize', 1);
+        'NumNeighbors', 11, 'Standardize', 1);
     predict = knnMdl.predict(testPartition);
     correctPredict = predict == labelTestPartition;
+    confusionMat{i} = confusionmat(double(correctPredict), labelTestPartition);
     accuracy(i) = sum(correctPredict) / size(labelTestPartition, 1);
 end
 
+% jumlah keseluruhan confusion matrix
+sumConfusion = zeros(2,2);
+for i = 1:size(confusionMat,2)
+    sumConfusion = sumConfusion + confusionMat{i};
+end
+
+% rata-rata akurasi
+averageAcc = mean(accuracy);
+disp(averageAcc);
 % save model
-% saveCompactModel(knnMdl, 'KNNModel');
+saveCompactModel(knnMdl, 'KNNModel');
