@@ -12,6 +12,7 @@ listSubFolder = dir('data\cropped\**\*.JPG');
 for i = 1:size(listSubFolder,1)
     imageData{i} = imread(fullfile(listSubFolder(i).folder, listSubFolder(i).name));
     name = strsplit(listSubFolder(i).name, '_');
+    listName{i} = listSubFolder(i).name;
     if (isequal(name{1}, 'indramayu'))
         % assign label 0 for indramayu
         label(i,:) = 0;
@@ -22,4 +23,4 @@ for i = 1:size(listSubFolder,1)
     disp([listSubFolder(i).name, ' loaded']);
 end
 
-save(fullfile('data','mangga.mat'), 'imageData', 'label');
+save(fullfile('data','mangga.mat'), 'listName', 'imageData', 'label');
