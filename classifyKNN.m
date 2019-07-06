@@ -26,10 +26,10 @@ for i = 1:cv.NumTestSets
 end
 
 % jumlah keseluruhan confusion matrix
-sumConfusion = zeros(2,2);
-for i = 1:size(confusionMat,2)
-    sumConfusion = sumConfusion + confusionMat{i};
-end
+% sumConfusion = zeros(2,2);
+% for i = 1:size(confusionMat,2)
+%     sumConfusion = sumConfusion + confusionMat{i};
+% end
 
 % rata-rata akurasi
 averageAcc = mean(accuracy);

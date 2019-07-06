@@ -51,6 +51,8 @@ labelTest = label(numDataTrain+1:numFeatures,:);
 filenameTrain = filename(1:numDataTrain);
 filenameTest = filename(numDataTrain+1:numFeatures);
 
+% TODO: seimbangkan banyaknya data test antara indramayu dan harumanis
+
 save('fiturLBP.mat', 'dataTrain', ...
     'dataTest', 'labelTrain', 'labelTest', ...
     'filenameTrain', 'filenameTest');
