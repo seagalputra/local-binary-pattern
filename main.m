@@ -91,7 +91,9 @@ Radius = 1;
 grayscale_image = rgb2gray(image);
 image_features = extractLBPFeatures(grayscale_image, 'Radius', Radius, ...
     'NumNeighbors', NumNeighbors);
-% TODO: Tampilkan ciri pada tabel gui
+
+cell_image_features = num2cell(image_features);
+set(handles.tabel_ciri, 'Data', cell_image_features);
 
 % --- Executes on button press in btn_klasifikasi.
 function btn_klasifikasi_Callback(hObject, eventdata, handles)
